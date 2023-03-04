@@ -1,12 +1,13 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
 using namespace std;
 int main()
 {
-	setlocale (LC_ALL, "rus");
+	setlocale(LC_ALL, "rus");
 	int action;
+	double a, b, c, x, y, xx, yy;
 	while (1) {
 		printf("\nВыберите действие:\n");
 		printf("1) Определить, какое равенство точнее.\n");
@@ -19,31 +20,30 @@ int main()
 			return -1;
 		case 1:
 			system("cls");
-			cout << "Какое равенство точнее: 1) 7/22 = 0.318 2) или sqrt(13) = 3.61\n";
+			printf("Введите первое значение:\n");
+			scanf("%lf", &a);
+			printf("Введите второе значение:\n");
+			scanf("%lf", &b);
+			printf("Введите значение второго равенства\n");
+			scanf("%lf", &c);
 			cout << ("Значения выражений с большим количеством десятичных знаков:\n");
-			printf("1) 7/22 = %f\n", 7 / 22.);
-			printf("2) sqrt(13) = %f\n", sqrt(13));
+			printf("1) %.0lf/%.0lf = %lf\n", a, b, a/b);
+			printf("2) sqrt(%.0lf) = %lf\n",c, sqrt(c));
 			cout << ("Предельные абсолютные погрешности, округляя их с избытком:\n");
-			printf("1) %f\n", fabs((7 / 22.) - 0.318));
-			printf("2) %f\n", fabs(sqrt(13) - 3.61));
-			printf("Предельные абсолютные погрешности составляют в %:\n");
-			printf("1) %f\n", ((fabs((7 / 22.) - 0.318)) / 0.318) * 100);
-			printf("2) %f\n", (fabs(sqrt(13) - 3.61) / 3.61) * 100);
-			if (fabs((7 / 22.) - 0.318) < fabs(sqrt(13) - 3.61))
-				cout << "Значит, более точное выражение: 7/22 = 0.318\n";
-			else cout << "Значит, более точное выражение: sqrt(13) = 3.61\n";
+			x = fabs(round(((a / b) * 100)) / 100) - (a / b);
+			y = fabs(round(((sqrt(c)) * 100)) / 100) - (sqrt(c));
+			printf("1) %lf\n", fabs(x));
+			printf("2) %lf\n", fabs(y));
+			printf("Предельные абсолютные погрешности в %%\n");
+			xx = (fabs(x)/(a/b))*100;
+			yy = (fabs(y) / sqrt(c)) * 100;
+			printf("1) %lf\n", fabs(xx));
+			printf("2) %lf\n", fabs(yy));
 			system("pause");
 			break;
 		case 2:
 			system("cls");
-			cout << "Округлить сомнительные цифры числа, оставив верные знаки. Определить абсолютную погрешность результата.\n";
-			cout << "0.3944,  x = 0.15%";
-			printf("0.3944 * 0.0015 = %f\n", 0.3944 * 0.0015);
-			printf("В данном числе верными являются 5 цифр, поэтому округляем его, сохраняя эти цифры %.2f\n", round(0.3944*100)/100);
-			if ((0.3944 - round(0.3944)) + (0.3944 * 0.0015) > 0.01)
-				printf("%f > 0.01\n", (0.3944 - round(0.3944)) + (0.3944 * 0.0015));
-			else printf("% f < 0.01\n", (0.3944 - round(0.3944)) + (0.3944 * 0.0015));
-			printf("Число округляется до ");
+
 			system("pause");
 			break;
 		case 3:
