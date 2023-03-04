@@ -30,7 +30,7 @@ int main()
 			printf("1) %.0lf/%.0lf = %lf\n", a, b, a/b);
 			printf("2) sqrt(%.0lf) = %lf\n",c, sqrt(c));
 			cout << ("Предельные абсолютные погрешности, округляя их с избытком:\n");
-			x = fabs(round(((a / b) * 100)) / 100) - (a / b);
+			x = (a/b) - fabs(round(((a / b) * 1000)) / 1000);
 			y = fabs(round(((sqrt(c)) * 100)) / 100) - (sqrt(c));
 			printf("1) %lf\n", fabs(x));
 			printf("2) %lf\n", fabs(y));
@@ -39,11 +39,19 @@ int main()
 			yy = (fabs(y) / sqrt(c)) * 100;
 			printf("1) %lf\n", fabs(xx));
 			printf("2) %lf\n", fabs(yy));
+			if (xx < yy)
+				printf("Значит, более точное выражение: %.0lf/%.0lf = %lf\n", a, b, a / b);
+			else
+				printf("Значит, более точное выражение: sqrt(%.0lf) = %lf\n", c,(sqrt(c)));
 			system("pause");
 			break;
 		case 2:
 			system("cls");
-
+			printf("Введите число:");
+			scanf("%lf", &a);
+			printf("Введите относительную погрешность:");
+			scanf("%lf", &b);
+			printf("");
 			system("pause");
 			break;
 		case 3:
